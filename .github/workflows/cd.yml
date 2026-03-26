@@ -1,0 +1,7 @@
+name: deploy to github page
+
+on:
+    push:
+        tags:
+            -'[0-9]+.[0-9]+.[0-9]+'
+            #- '*.*.*'
