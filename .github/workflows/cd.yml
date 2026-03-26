@@ -3,26 +3,26 @@ name: deploy to github page
 on:
   push:
     tags:
-        -'[0-9]+.[0-9]+.[0-9]+'  # 1.0.0 , 2.1.0
-        #- '*.*.*'
+      -'[0-9]+.[0-9]+.[0-9]+'  # 1.0.0 , 2.1.0
+      #- '*.*.*'
 
 jobs: 
   build-prod-job:
     runs-on: ubuntu-latest
     steps: 
-        - name: clone repo 
-          uses: actions/checkout@v6
-        - name: setup node.js version to 24.x
-          uses: actions/setup-node@v6
-          with:
-              node-version: '24.x'
-              cache: 'npm'
-        - name: Install Dependencies
-          run: npm ci # clean install ใช้ npm ci แทน npm install
-        - name: Build Project (productiont and create dist folder)
-          run: npm run build
-        - name: Upload dist folder artifact
-          uses: actions/upload-artifact@v7
-          with:
-                name: dist-production
-                path: dist
+      - name: clone repo 
+        uses: actions/checkout@v6
+      - name: setup node.js version to 24.x
+        uses: actions/setup-node@v6
+        with:
+          node-version: '24.x'
+          cache: 'npm'
+      - name: Install Dependencies
+        run: npm ci # clean install ใช้ npm ci แทน npm install
+      - name: Build Project (productiont and create dist folder)
+        run: npm run build
+      - name: Upload dist folder artifact
+        uses: actions/upload-artifact@v7
+        with:
+          name: dist-production
+          path: dist
