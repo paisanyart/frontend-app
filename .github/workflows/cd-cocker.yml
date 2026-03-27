@@ -25,7 +25,7 @@ jobs:
     environment: production
     env:
       CONTAINER_NAME: ${{ github.actor }}
-      SERVER_PORT: 8989 # http://45.32.108.242:8989
+      SERVER_PORT: 8989 #http://45.32.108.242:8989
       DOCKER_IMAGE_URL: 'ghcr.io/${{ github.actor }}/${{ github.event.repository }}:${{ github.ref_name }}'
     steps:
     - name: Executing Remote SSH using password to production Server
