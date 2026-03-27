@@ -48,4 +48,4 @@ jobs:
         with: 
           username: ${{github.actor}}
           repomane: ${{github.event.resository.name}}
-          token: ${{secret.GITHUB_TOKEN}}
+          token: ${{secrets.GITHUB_TOKEN}}
