@@ -26,3 +26,26 @@ jobs:
         with:
           name: dist-production
           path: dist
+
+auto-deploy-github-page:
+  runs-onL ubuntu-lastest
+  needs: build-prod-job
+  permissions:
+    contents: write 
+  steps:
+    - name: Download dist folder artifact
+      uses: actions/download-artifact@v7
+      with:
+        name: dist-production
+        path: dist
+
+    - run: ls dist
+    
+    - uses: actions/checkout@v6
+
+    - name: Deploy to GitHub Pase
+      users: SerhiiKa/VuePagesAction@1.0.4
+      with: 
+        username: ${{github.actor}}
+        repomane: ${{github.event.resository.name}}
+        token:${{secret.GITHUB_TOKEN}}
